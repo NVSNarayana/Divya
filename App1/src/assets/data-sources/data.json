@@ -1,0 +1,66 @@
+{
+    "segments": [
+        {
+            "key": "HSB",
+            "value": "Home and Small Business"
+        },
+        {
+            "key": "REL",
+            "value": "Relationship"
+        }
+    ],
+    "level3": [
+        {
+            "key": "PREF",
+            "value": "Preferred"
+        }
+    ],
+    "shipToCountry": [
+        {
+            "key": "AB",
+            "value": "NSVC Australia"
+        }
+    ],
+    "lob": [
+        {
+            "key": "AX",
+            "value": "Mobile Electronics"
+        },
+        {
+            "key": "DI",
+            "value": "XPS Desktops"
+        },
+        {
+            "key": "DL",
+            "value": "PowerConnect"
+        },
+        {
+            "key": "DP",
+            "value": "Other Electronics"
+        },
+        {
+            "key": "DS",
+            "value": "Departmental Servers"
+        },
+        {
+            "key": "EM",
+            "value": "Dell/EMC"
+        },
+        {
+            "key": "EQ",
+            "value": "Equallogic"
+        },
+        {
+            "key": "ES",
+            "value": "PowerEdge SC Servers"
+        },
+        {
+            "key": "ID",
+            "value": "Personal Desktops"
+        },
+        {
+            "key": "IM",
+            "value": "Imaging"
+        }
+    ]
+}

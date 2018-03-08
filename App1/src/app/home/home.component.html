@@ -1,0 +1,153 @@
+<div fxLayout="column">
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+    <div class="min-width-110">Validation Type:</div>
+    <div>
+      <mat-form-field class="min-width-315">
+        <mat-select [(value)]="selectedValidationType" class="min-width-320">
+          <mat-option value="">-- Select --</mat-option>
+          <mat-option *ngFor="let v of validationTypes" value="{{v}}">{{v}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+    <div class="min-width-110">Categories:</div>
+    <div>
+      <mat-form-field>
+        <mat-select [(value)]="selectedCategory">
+          <mat-option value="">-- Select --</mat-option>
+          <mat-option *ngFor="let v of categories" value="{{v}}">{{v}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+    <div class="min-width-110">Validation On:</div>
+    <div>
+      <mat-form-field>
+        <mat-select [(value)]="selectedValidationOn">
+          <mat-option value="">-- Select --</mat-option>
+          <mat-option *ngFor="let v of validationOn" value="{{v}}">{{v}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+    <mat-radio-group [(ngModel)]="selectedEmeaApj">
+      <mat-radio-button class="margin-right-10" *ngFor="let v of emeaApj" [value]="v">
+        {{v}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+    <div class="min-width-110">BU:</div>
+    <div>
+      <mat-form-field>
+        <mat-select [(value)]="selectedBu" (selectionChange)="handleSelectionChange()">
+          <mat-option value="">-- Select --</mat-option>
+          <mat-option *ngFor="let v of bu" value="{{v.key}}">{{v.value}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" fxFlexFill *ngIf="isApiDataVisible">
+    <div fxLayout="column">
+      <div class="margin-bottom-10">Segment:</div>
+      <div class="mat-elevation-z8">
+        <mat-table #table [dataSource]="segments">
+          <!-- key Column -->
+          <ng-container matColumnDef="key">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.key}} </mat-cell>
+          </ng-container>
+
+          <!-- value Column -->
+          <ng-container matColumnDef="value">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="['key','value']" style="display:none;"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: ['key','value'];"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayoutGap="10px" fxFlexFill *ngIf="isApiDataVisible">
+    <div fxLayout="column">
+      <div class="margin-top-bottom-10">Level 3:</div>
+      <div class="mat-elevation-z8">
+        <mat-table #table [dataSource]="level3">
+          <!-- key Column -->
+          <ng-container matColumnDef="key">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.key}} </mat-cell>
+          </ng-container>
+
+          <!-- value Column -->
+          <ng-container matColumnDef="value">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="['key','value']" style="display:none;"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: ['key','value'];"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" fxFlexFill *ngIf="isApiDataVisible">
+    <div fxLayout="column">
+      <div class="margin-top-bottom-10">Ship to Country:</div>
+      <div class="mat-elevation-z8">
+        <mat-table #table [dataSource]="shipToCountry">
+          <!-- key Column -->
+          <ng-container matColumnDef="key">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.key}} </mat-cell>
+          </ng-container>
+
+          <!-- value Column -->
+          <ng-container matColumnDef="value">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="['key','value']" style="display:none;"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: ['key','value'];"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" fxFlexFill *ngIf="isApiDataVisible">
+    <div fxLayout="column">
+      <div class="margin-top-bottom-10">Lob:</div>
+      <div class="mat-elevation-z8">
+        <mat-table #table [dataSource]="lob">
+          <!-- key Column -->
+          <ng-container matColumnDef="key">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <mat-checkbox [(ngModel)]="element.isSelected">{{element.key}}</mat-checkbox>
+            </mat-cell>
+          </ng-container>
+
+          <!-- value Column -->
+          <ng-container matColumnDef="value">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="['key','value']" style="display:none;"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: ['key','value'];"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div fxLayout="column" style="margin-top:40px;padding:5px; font-size:12px; border:1px solid black;">
+  <div>Selected Validation Type: {{selectedValidationType}}</div>
+  <div>Selected Category: {{selectedCategory}}</div>
+  <div>Selected Validation On: {{selectedValidationOn}}</div>
+  <div>Selected Radio: {{selectedEmeaApj}}</div>
+  <div>Selected BU: {{selectedBu}}</div>
+  <div *ngIf="isApiDataVisible"> Selected LOB: {{selectedLobs|json}}</div>
+</div>
